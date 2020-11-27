@@ -31,7 +31,7 @@ public class playerMovement : MonoBehaviour
         if(ApplicationModel.playerCanMove){
             playerMovementDirection();
             //Actualiza la posicion basado en la velocidad actual
-            transform.position += new Vector3(velocidad[0],velocidad[1],0);
+            rb.velocity= new Vector3(velocidad[0],velocidad[1],0)*200;
             if (this.gameObject.GetComponent<Rigidbody2D>().IsSleeping() ) {
                 this.gameObject.GetComponent<Rigidbody2D>().WakeUp();
             }

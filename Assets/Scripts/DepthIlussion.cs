@@ -11,13 +11,13 @@ public class DepthIlussion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activado ){
-            if(GetComponent<playerMovement>().velocidad[1]>0 && transform.position.y<limiteSuperior ){
-                transform.localScale -= new Vector3(0.001f,0.001f,0);
+        if(activado){
+            if(GetComponent<playerMovement>().velocidad[1]>0 && transform.position.y<limiteSuperior-0.15f ){
+                transform.localScale -= new Vector3(0.0002f,0.0002f,0);
             }
-            else if(GetComponent<playerMovement>().velocidad[1]<0 && transform.position.y >  limiteInferior  )
+            else if(GetComponent<playerMovement>().velocidad[1]<0 && transform.position.y >  limiteInferior+0.15f  )
             {
-                transform.localScale += new Vector3(0.001f,0.001f,0);
+                transform.localScale += new Vector3(0.0002f,0.0002f,0);
             }
         }
     }

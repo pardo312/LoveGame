@@ -51,6 +51,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -119,11 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a6f0df28a39c647a3757851dec1219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aceleracion: 2.6
+  aceleracion: 4
   walkingAnimation: {fileID: 4680681862318839707}
-  spritePerfil: {fileID: 21300000, guid: 83a7146c80d6f8c4a985526163063efe, type: 3}
   spriteUp: {fileID: 21300000, guid: 0c94a81f1ffd45044b23044307ff5877, type: 3}
-  spriteFront: {fileID: 21300000, guid: 7f375726c83bd16499a02a43c82c7eef, type: 3}
+  spriteDown: {fileID: 0}
+  velocidad:
+  - 0
+  - 0
 --- !u!61 &4680681862318839701
 BoxCollider2D:
   m_ObjectHideFlags: 0
