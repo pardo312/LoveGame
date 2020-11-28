@@ -39,6 +39,8 @@ public class dialogo : MonoBehaviour
             StartCoroutine(Type());
         }
         else{
+            //Cambiar
+            GameObject.Find("Daniel").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             textDisplay.text = "";
             container.SetActive(false);
             this.gameObject.SetActive(false);

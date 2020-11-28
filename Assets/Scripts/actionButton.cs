@@ -24,6 +24,8 @@ public class actionButton : MonoBehaviour
      void OnTriggerStay2D(Collider2D other) {
         if(other.gameObject.tag =="Player"){
             if(Input.GetButton("Jump") && enableTriggerTimer==50){
+                other.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                Debug.Log(other.gameObject.GetComponent<Rigidbody2D>().velocity);
                 enableTriggerTimer=0;
                 dialogo.GetComponent<dialogo>().sentences = newSentences;
                 dialogo.SetActive(true);

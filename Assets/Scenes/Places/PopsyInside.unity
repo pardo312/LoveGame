@@ -605,8 +605,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogo: {fileID: 827410052}
   newSentences:
-  - 'Daniel: Computadora de Lixu'
-  - 'Daniel: Esta reproduciendo Dalas... no me lo esperaba'
+  - 'Cajera: Hola! En que te puedo ayudar?'
+  - 'Daniel: Hola! Me regalas un helado de chocolate belga porfavor?'
   buttonNext: {fileID: 1474904221}
 --- !u!1 &827410052 stripped
 GameObject:
@@ -1792,7 +1792,12 @@ PrefabInstance:
     - target: {fileID: 1954466612189915868, guid: dcf4259cdfc861041a9a7fa0ad3e788f,
         type: 3}
       propertyPath: m_fontStyle
-      value: 0
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954466612189915868, guid: dcf4259cdfc861041a9a7fa0ad3e788f,
+        type: 3}
+      propertyPath: m_text
+      value: Siguiente
       objectReference: {fileID: 0}
     - target: {fileID: 1954466612818062580, guid: dcf4259cdfc861041a9a7fa0ad3e788f,
         type: 3}

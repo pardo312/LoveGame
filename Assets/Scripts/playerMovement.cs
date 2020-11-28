@@ -9,7 +9,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private Animator walkingAnimation;
     [SerializeField] private Sprite spriteUp;
     [SerializeField] private Sprite spriteDown;
-    [SerializeField]public float[] velocidad= new float[2];
+    [SerializeField]public Vector2 velocidad= Vector2.zero;
 
     //Rigibody del objeto
     private Rigidbody2D rb;
