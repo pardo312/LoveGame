@@ -47,6 +47,9 @@ TagManager:
   - name: Player
     uniqueID: 2275881441
     locked: 0
+  - name: BackgroundFront
+    uniqueID: 2237592317
+    locked: 0
   - name: Canvas
     uniqueID: 4005844909
     locked: 0

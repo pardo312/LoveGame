@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4680681862318839703}
   - component: {fileID: 4680681862318839702}
   - component: {fileID: 4680681862318839701}
-  - component: {fileID: 4680681862318839700}
   - component: {fileID: 4680681862318839707}
+  - component: {fileID: 1257886705901771086}
   m_Layer: 0
   m_Name: Daniel
   m_TagString: Player
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2019085855
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7f375726c83bd16499a02a43c82c7eef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,12 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aceleracion: 4
-  walkingAnimation: {fileID: 4680681862318839707}
-  spriteUp: {fileID: 21300000, guid: 0c94a81f1ffd45044b23044307ff5877, type: 3}
-  spriteDown: {fileID: 0}
-  velocidad:
-  - 0
-  - 0
+  isCurrentPlayer: 0
+  sprites:
+  - {fileID: 21300000, guid: 0c94a81f1ffd45044b23044307ff5877, type: 3}
+  - {fileID: 21300000, guid: 7f375726c83bd16499a02a43c82c7eef, type: 3}
+  velocidad: {x: 0, y: 0}
 --- !u!61 &4680681862318839701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,19 +152,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.84, y: 0.7416276}
   m_EdgeRadius: 0
---- !u!114 &4680681862318839700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4680681862318839706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c86669b472d2340b143be54c237f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainCamera: {fileID: 0}
 --- !u!95 &4680681862318839707
 Animator:
   serializedVersion: 3
@@ -185,3 +171,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1257886705901771086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4680681862318839706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c86669b472d2340b143be54c237f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}

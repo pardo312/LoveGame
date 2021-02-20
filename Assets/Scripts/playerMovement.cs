@@ -6,23 +6,23 @@ public class playerMovement : MonoBehaviour
 {
     //Aceleracion del personaje
     [SerializeField,Range(2f, 4f)]private float aceleracion = 1f;
-    [SerializeField] private Animator walkingAnimation;
-    [SerializeField] private Sprite spriteUp;
-    [SerializeField] private Sprite spriteDown;
+    [SerializeField] private bool isCurrentPlayer;
+    [SerializeField] private Sprite[] sprites;
     [SerializeField]public Vector2 velocidad= Vector2.zero;
-
-    //Rigibody del objeto
+    private Animator walkingAnimation;
     private Rigidbody2D rb;
 
     //Determina direccion horizontal que tiene el personaje
     private bool facingLeft = true;
-    //Arreglo que guarda la velocidad horizontal y vertical, en ese orden.
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = ApplicationModel.posicionDelJugador;
-        rb = GetComponent<Rigidbody2D>();
+        if(isCurrentPlayer)
+            transform.position = ApplicationModel.posicionDelJugador;
+        
+        TryGetComponent<Rigidbody2D>(out rb);
+        walkingAnimation = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,42 +31,78 @@ public class playerMovement : MonoBehaviour
         if(ApplicationModel.playerCanMove){
             playerMovementDirection();
             //Actualiza la posicion basado en la velocidad actual
-            rb.velocity= new Vector3(velocidad[0],velocidad[1],0)*200;
-            if (this.gameObject.GetComponent<Rigidbody2D>().IsSleeping() ) {
-                this.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+            if(rb!=null){
+                rb.velocity= new Vector3(velocidad[0],velocidad[1],0)*200;
+                //Fix colliders not working properlly
+                if (rb.IsSleeping() ) {
+                    rb.WakeUp();
+                }
             }
         }
         
     }
     void playerMovementDirection()
     {
+        moveHorizontal();
+        moveVertical();
+    }
+
+    void moveHorizontal(){
         if(Input.GetAxis("Horizontal") != 0){
             walkingAnimation.SetBool("walkingHorizontal",true);
+
+            //Walking Right
             if(Input.GetAxis("Horizontal") >0){
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
                 facingLeft =false;
-                velocidad[0] = aceleracion*Time.deltaTime;
+                if(isCurrentPlayer){
+                    velocidad[0] = aceleracion*Time.deltaTime;
+                }
+                else{
+                    transform.localPosition = new Vector3(2,-0.4f,1);
+                }
             }
+            //Walking Left
             else{
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
                 facingLeft =true;
-                velocidad[0] = -aceleracion*Time.deltaTime;
+                if(isCurrentPlayer){
+                    velocidad[0] = -aceleracion*Time.deltaTime;
+                }
+                else{
+                    transform.localPosition =  new Vector3(2,-0.4f,1);
+                }
             }
         }
         else{
             walkingAnimation.SetBool("walkingHorizontal",false);
             velocidad[0] = 0;
         }
+    }
+    void moveVertical(){
         if(Input.GetAxis("Vertical") != 0){
+
+            
             if(Input.GetAxis("Vertical") >0){
                 walkingAnimation.SetBool("walkingUp",true);
-                velocidad[1] = aceleracion*Time.deltaTime;
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = spriteUp;
+                if(isCurrentPlayer){
+                    velocidad[1] = aceleracion*Time.deltaTime;
+                }
+                else{
+                    transform.localPosition = -1 * new Vector3(0,2,1);
+                    GetComponent<SpriteRenderer>().sortingOrder = 2;
+                }
             }
             else{
+                
                 walkingAnimation.SetBool("walkingDown",true);
-                velocidad[1] = -aceleracion*Time.deltaTime;
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = spriteDown;
+                if(isCurrentPlayer){
+                    velocidad[1] = -aceleracion*Time.deltaTime;
+                }
+                else{
+                    transform.localPosition =  new Vector3(0,2,1);
+                    GetComponent<SpriteRenderer>().sortingOrder = 0;
+                }
             }
         }
         else{
@@ -75,4 +111,6 @@ public class playerMovement : MonoBehaviour
             velocidad[1] = 0;
         }
     }
+
+
 }
